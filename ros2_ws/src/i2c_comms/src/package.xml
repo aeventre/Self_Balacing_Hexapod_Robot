@@ -1,0 +1,17 @@
+<package format="2">
+  <name>static_balancer</name>
+  <version>0.1.0</version>
+  <description>Spiderbot Static Balancer</description>
+
+  <maintainer email="ellahick@buffalo.edu">ellahick</maintainer>
+  <license>Apache 2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
