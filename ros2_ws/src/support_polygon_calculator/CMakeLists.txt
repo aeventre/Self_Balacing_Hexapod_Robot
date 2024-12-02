@@ -14,7 +14,14 @@ find_package(std_msgs REQUIRED)
 find_package(hexapod_msgs REQUIRED)  # Custom messages for your project
 
 # Add the executable
-add_executable(support_polygon_calculator src/support_polygon_calculator.cpp)
+add_executable(support_polygon_node src/support_polygon_calculator.cpp)
+
+# Specify dependencies for the target
+ament_target_dependencies(support_polygon_node
+  rclcpp
+  std_msgs
+  geometry_msgs
+)
 
 # Link dependencies
 ament_target_dependencies(support_polygon_calculator
