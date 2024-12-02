@@ -1,183 +1,172 @@
-#include <cstdio>
 #include <vector>
-#include <Eigen/Dense>
-#include <boost/geometry.hpp>
-#include <boost/geometry/geometries/point.hpp>
-#include <boost/geometry/geometries/polygon.hpp>
-#include <CGAL/convex_hull_2.h>
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/point.hpp"
-#include "geometry_msgs/msg/polygon_stamped.hpp"
-#include "std_msgs/msg/float32.hpp"
+#include "std_msgs/msg/float64.hpp"
+#include "hexapod_msgs/msg/leg_positions.hpp"
+#include "hexapod_msgs/msg/polygon.hpp"
 
-class SupportPolygonNode : public rclcpp::Node
+class SupportPolygonCalculator : public rclcpp::Node
 {
 public:
-    SupportPolygonNode()
-        : Node("support_polygon_node")
+    SupportPolygonCalculator() : Node("support_polygon_calculator")
     {
-        // Initialize subscribers
-        grounded_feet_sub_ = this->create_subscription<std::vector<geometry_msgs::msg::Point>>(
-            "/grounded_foot_positions", 10,
-            std::bind(&SupportPolygonNode::groundedFeetCallback, this, std::placeholders::_1));
+        // Subscriptions
+        foot_status_sub_ = this->create_subscription<std_msgs::msg::BoolArray>(
+            "/foot_status", 10,
+            std::bind(&SupportPolygonCalculator::footStatusCallback, this, std::placeholders::_1));
+
+        foot_positions_sub_ = this->create_subscription<hexapod_msgs::msg::LegPositions>(
+            "/foot_positions", 10,
+            std::bind(&SupportPolygonCalculator::footPositionsCallback, this, std::placeholders::_1));
 
         com_sub_ = this->create_subscription<geometry_msgs::msg::Point>(
             "/center_of_mass", 10,
-            std::bind(&SupportPolygonNode::comCallback, this, std::placeholders::_1));
+            std::bind(&SupportPolygonCalculator::comCallback, this, std::placeholders::_1));
 
-        // Initialize publishers
-        polygon_pub_ = this->create_publisher<geometry_msgs::msg::PolygonStamped>("/support_polygon", 10);
-        stability_margin_pub_ = this->create_publisher<std_msgs::msg::Float32>("/stability_margin", 10);
+        // Publications
+        polygon_pub_ = this->create_publisher<hexapod_msgs::msg::Polygon>("/support_polygon", 10);
         centroid_pub_ = this->create_publisher<geometry_msgs::msg::Point>("/polygon_centroid", 10);
+        stability_margin_pub_ = this->create_publisher<std_msgs::msg::Float64>("/stability_margin", 10);
 
-        // Initialize timer for periodic publishing
-        timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(100),
-            std::bind(&SupportPolygonNode::publishResults, this));
-
-        RCLCPP_INFO(this->get_logger(), "SupportPolygonNode initialized.");
+        RCLCPP_INFO(this->get_logger(), "Support Polygon Calculator initialized.");
     }
 
 private:
-    void groundedFeetCallback(const std::shared_ptr<std::vector<geometry_msgs::msg::Point>> msg)
+    // Callback for foot status
+    void footStatusCallback(const std_msgs::msg::BoolArray::SharedPtr msg)
     {
-        if (msg->empty())
-        {
-            RCLCPP_WARN(this->get_logger(), "Received empty grounded foot positions.");
-            return;
-        }
-        grounded_foot_positions_ = *msg;
-        RCLCPP_INFO(this->get_logger(), "Grounded foot positions updated.");
+        foot_status_ = msg->data;
+        processPolygon();
     }
 
+    // Callback for foot positions
+    void footPositionsCallback(const hexapod_msgs::msg::LegPositions::SharedPtr msg)
+    {
+        foot_positions_ = msg->positions;
+        processPolygon();
+    }
+
+    // Callback for CoM
     void comCallback(const geometry_msgs::msg::Point::SharedPtr msg)
     {
-        if (msg == nullptr)
+        com_position_ = *msg;
+        processPolygon();
+    }
+
+    // Main function to compute and publish results
+    void processPolygon()
+    {
+        if (foot_status_.empty() || foot_positions_.empty())
         {
-            RCLCPP_WARN(this->get_logger(), "Received invalid CoM message.");
+            RCLCPP_WARN(this->get_logger(), "Waiting for input data.");
             return;
         }
-        com_position_ = *msg;
-        RCLCPP_INFO(this->get_logger(), "Center of Mass updated: x=%.2f, y=%.2f, z=%.2f", msg->x, msg->y, msg->z);
-    }
 
-    void publishResults()
-    {
-        try
+        if (foot_status_.size() != foot_positions_.size())
         {
-            // Check if grounded foot positions are available
-            if (grounded_foot_positions_.empty())
-            {
-                RCLCPP_WARN(this->get_logger(), "No grounded foot positions available. Skipping calculations.");
-                return;
-            }
+            RCLCPP_ERROR(this->get_logger(), "Mismatched foot status and positions sizes.");
+            return;
+        }
 
-            // Construct the support polygon
-            geometry_msgs::msg::PolygonStamped polygon_msg;
-            polygon_msg.header.stamp = this->now();
-            polygon_msg.header.frame_id = "base_link";
-
-            for (const auto &foot : grounded_foot_positions_)
+        // Construct support polygon
+        hexapod_msgs::msg::Polygon polygon_msg;
+        for (size_t i = 0; i < foot_status_.size(); ++i)
+        {
+            if (foot_status_[i]) // If foot is grounded
             {
-                geometry_msgs::msg::Point32 point;
-                point.x = foot.x;
-                point.y = foot.y;
-                point.z = foot.z;
-                polygon_msg.polygon.points.push_back(point);
-            }
-
-            polygon_pub_->publish(polygon_msg);
-
-            // Compute and publish the centroid
-            geometry_msgs::msg::Point centroid;
-            try
-            {
-                centroid = computePolygonCentroid(polygon_msg.polygon);
-                centroid_pub_->publish(centroid);
-                RCLCPP_INFO(this->get_logger(), "Centroid: x=%.2f, y=%.2f, z=%.2f", centroid.x, centroid.y, centroid.z);
-            }
-            catch (const std::exception &e)
-            {
-                RCLCPP_ERROR(this->get_logger(), "Error computing centroid: %s", e.what());
-            }
-
-            // Compute and publish the stability margin
-            try
-            {
-                double margin = computeStabilityMargin(polygon_msg.polygon, com_position_);
-                std_msgs::msg::Float32 margin_msg;
-                margin_msg.data = static_cast<float>(margin);
-                stability_margin_pub_->publish(margin_msg);
-                RCLCPP_INFO(this->get_logger(), "Stability Margin: %.2f", margin);
-            }
-            catch (const std::exception &e)
-            {
-                RCLCPP_ERROR(this->get_logger(), "Error computing stability margin: %s", e.what());
+                polygon_msg.points.push_back(foot_positions_[i]);
             }
         }
-        catch (const std::exception &e)
-        {
-            RCLCPP_ERROR(this->get_logger(), "Unexpected error in publishResults: %s", e.what());
-        }
+
+        // Publish the support polygon
+        polygon_pub_->publish(polygon_msg);
+
+        // Compute and publish the centroid
+        auto centroid = computeCentroid(polygon_msg);
+        centroid_pub_->publish(centroid);
+
+        // Compute and publish the stability margin
+        auto margin = computeStabilityMargin(polygon_msg, com_position_);
+        std_msgs::msg::Float64 margin_msg;
+        margin_msg.data = margin;
+        stability_margin_pub_->publish(margin_msg);
+
+        RCLCPP_INFO(this->get_logger(), "Published polygon, centroid, and stability margin.");
     }
 
-    geometry_msgs::msg::Point computePolygonCentroid(const geometry_msgs::msg::Polygon &polygon)
+    // Helper: Compute centroid of the polygon
+    geometry_msgs::msg::Point computeCentroid(const hexapod_msgs::msg::Polygon &polygon)
     {
         geometry_msgs::msg::Point centroid;
         double x_sum = 0.0, y_sum = 0.0;
-        size_t n = polygon.points.size();
-
-        if (n == 0)
-        {
-            throw std::runtime_error("Polygon has no points. Cannot compute centroid.");
-        }
-
         for (const auto &point : polygon.points)
         {
             x_sum += point.x;
             y_sum += point.y;
         }
-
-        centroid.x = x_sum / n;
-        centroid.y = y_sum / n;
-        centroid.z = 0.0;
+        size_t n = polygon.points.size();
+        if (n > 0)
+        {
+            centroid.x = x_sum / n;
+            centroid.y = y_sum / n;
+        }
         return centroid;
     }
 
-    double computeStabilityMargin(const geometry_msgs::msg::Polygon &polygon, const geometry_msgs::msg::Point &com)
+    // Helper: Compute stability margin
+    double computeStabilityMargin(const hexapod_msgs::msg::Polygon &polygon,
+                                  const geometry_msgs::msg::Point &com)
     {
-        using BoostPoint = boost::geometry::model::point<double, 2, boost::geometry::cs::cartesian>;
-        using BoostPolygon = boost::geometry::model::polygon<BoostPoint>;
-
-        if (polygon.points.empty())
+        // Compute the shortest distance from CoM to polygon edges (simplified)
+        double min_distance = std::numeric_limits<double>::max();
+        for (size_t i = 0; i < polygon.points.size(); ++i)
         {
-            throw std::runtime_error("Polygon has no points. Cannot compute stability margin.");
+            const auto &p1 = polygon.points[i];
+            const auto &p2 = polygon.points[(i + 1) % polygon.points.size()];
+            double distance = pointToLineDistance(com, p1, p2);
+            min_distance = std::min(min_distance, distance);
         }
-
-        BoostPolygon boost_polygon;
-        for (const auto &pt : polygon.points)
-        {
-            boost_polygon.outer().emplace_back(pt.x, pt.y);
-        }
-
-        BoostPoint com_point(com.x, com.y);
-        return boost::geometry::distance(com_point, boost_polygon);
+        return min_distance;
     }
 
-    rclcpp::Subscription<std::vector<geometry_msgs::msg::Point>>::SharedPtr grounded_feet_sub_;
-    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr com_sub_;
-    rclcpp::Publisher<geometry_msgs::msg::PolygonStamped>::SharedPtr polygon_pub_;
-    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr stability_margin_pub_;
-    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr centroid_pub_;
-    rclcpp::TimerBase::SharedPtr timer_;
-    std::vector<geometry_msgs::msg::Point> grounded_foot_positions_;
+    // Helper: Point-to-line distance calculation
+    double pointToLineDistance(const geometry_msgs::msg::Point &p,
+                                const geometry_msgs::msg::Point &p1,
+                                const geometry_msgs::msg::Point &p2)
+    {
+        // Compute the perpendicular distance from `p` to the line segment `p1-p2`
+        double dx = p2.x - p1.x;
+        double dy = p2.y - p1.y;
+        double length_sq = dx * dx + dy * dy;
+        if (length_sq == 0.0)
+        {
+            return std::hypot(p.x - p1.x, p.y - p1.y);
+        }
+        double t = ((p.x - p1.x) * dx + (p.y - p1.y) * dy) / length_sq;
+        t = std::max(0.0, std::min(1.0, t));
+        double proj_x = p1.x + t * dx;
+        double proj_y = p1.y + t * dy;
+        return std::hypot(p.x - proj_x, p.y - proj_y);
+    }
+
+    // Member variables
+    std::vector<bool> foot_status_;
+    std::vector<geometry_msgs::msg::Point> foot_positions_;
     geometry_msgs::msg::Point com_position_;
+
+    rclcpp::Subscription<std_msgs::msg::BoolArray>::SharedPtr foot_status_sub_;
+    rclcpp::Subscription<hexapod_msgs::msg::LegPositions>::SharedPtr foot_positions_sub_;
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr com_sub_;
+
+    rclcpp::Publisher<hexapod_msgs::msg::Polygon>::SharedPtr polygon_pub_;
+    rclcpp::Publisher<geometry_msgs::msg::Point>::SharedPtr centroid_pub_;
+    rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr stability_margin_pub_;
 };
 
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<SupportPolygonNode>());
+    rclcpp::spin(std::make_shared<SupportPolygonCalculator>());
     rclcpp::shutdown();
     return 0;
 }
