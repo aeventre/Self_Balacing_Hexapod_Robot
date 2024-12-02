@@ -24,6 +24,11 @@
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>hexapod_msgs</exec_depend>
 
+  <test_depend>ament_cmake_pytest</test_depend>
+<test_depend>pytest</test_depend>
+<test_depend>launch_testing</test_depend>
+
+
   <export>
     <build_type>ament_python</build_type>
   </export>
