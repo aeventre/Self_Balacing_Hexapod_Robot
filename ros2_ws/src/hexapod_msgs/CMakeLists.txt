@@ -16,6 +16,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/LegCommands.msg"
   "msg/LegPositions.msg"
   "msg/FootStatus.msg"
+  "msg/BoolArray.msg"
   DEPENDENCIES geometry_msgs
 )
 

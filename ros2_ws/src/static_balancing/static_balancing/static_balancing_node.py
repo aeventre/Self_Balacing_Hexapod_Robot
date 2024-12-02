@@ -1,105 +1,121 @@
 import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import Point
-from std_msgs.msg import Float64, Bool
-from hexapod_msgs.msg import LegPositions, LegCommands
+from std_msgs.msg import Float64
+from hexapod_msgs.msg import LegPositions, LegCommands, BoolArray
+
 
 class StaticBalancingNode(Node):
     def __init__(self):
         super().__init__('static_balancing_node')
 
-        # Parameters
-        self.k_scaling = self.declare_parameter('k_scaling', 0.5).value
-
-        # Subscribers
-        self.sub_com = self.create_subscription(Point, '/center_of_mass', self.com_callback, 10)
-        self.sub_stability_margin = self.create_subscription(Float64, '/stability_margin', self.margin_callback, 10)
-        self.sub_polygon_centroid = self.create_subscription(Point, '/polygon_centroid', self.centroid_callback, 10)
-        self.sub_foot_positions = self.create_subscription(LegPositions, '/foot_positions', self.foot_positions_callback, 10)
-        self.sub_foot_status = self.create_subscription(Bool, '/foot_status', self.foot_status_callback, 10)
-
-        # Publisher
-        self.pub_leg_commands = self.create_publisher(LegCommands, '/leg_commands', 10)
-
-        # State Variables
+        # Initialize internal state variables
         self.com = None
-        self.centroid = None
         self.margin = None
+        self.centroid = None
         self.foot_positions = None
         self.foot_status = None
 
+        # Publishers
+        self.pub_leg_commands = self.create_publisher(LegCommands, '/leg_commands', 10)
+
+        # Subscribers
+        self.create_subscription(Point, '/center_of_mass', self.com_callback, 10)
+        self.create_subscription(Float64, '/stability_margin', self.margin_callback, 10)
+        self.create_subscription(Point, '/polygon_centroid', self.centroid_callback, 10)
+        self.create_subscription(LegPositions, '/foot_positions', self.foot_positions_callback, 10)
+        self.create_subscription(BoolArray, '/foot_status', self.foot_status_callback, 10)
+
+        # Timer to periodically adjust foot positions
+        self.timer = self.create_timer(1.0, self.timer_callback)
+
     def com_callback(self, msg):
         self.com = (msg.x, msg.y, msg.z)
+        self.get_logger().info(f"Received CoM: {self.com}")
 
     def margin_callback(self, msg):
         self.margin = msg.data
+        self.get_logger().info(f"Received Stability Margin: {self.margin}")
 
     def centroid_callback(self, msg):
         self.centroid = (msg.x, msg.y, msg.z)
+        self.get_logger().info(f"Received Centroid: {self.centroid}")
 
     def foot_positions_callback(self, msg):
-        self.foot_positions = [(foot.x, foot.y, foot.z) for foot in msg.positions]
+        self.foot_positions = [(p.x, p.y, p.z) for p in msg.positions]
+        self.get_logger().info(f"Received Foot Positions: {self.foot_positions}")
 
     def foot_status_callback(self, msg):
         self.foot_status = msg.data
+        self.get_logger().info(f"Received Foot Status: {self.foot_status}")
+
+    def timer_callback(self):
+        try:
+            self.adjust_foot_positions()
+        except Exception as e:
+            self.get_logger().error(f"Error in timer_callback: {e}")
 
     def adjust_foot_positions(self):
-        # Ensure all necessary data is available
+        # Log missing data before returning
         if None in (self.com, self.centroid, self.margin, self.foot_positions, self.foot_status):
-            self.get_logger().warn("Waiting for necessary data...")
+            self.get_logger().warn(
+                f"Waiting for necessary data...\n"
+                f"  CoM: {self.com}\n"
+                f"  Centroid: {self.centroid}\n"
+                f"  Margin: {self.margin}\n"
+                f"  Foot Positions: {self.foot_positions}\n"
+                f"  Foot Status: {self.foot_status}"
+            )
             return
 
-        # Check stability margin
-        if self.margin > 0.01:  # Replace 0.01 with your stability threshold
-            self.get_logger().info("Stable, no adjustment needed.")
+        # Log valid data
+        self.get_logger().info(
+            f"Adjusting foot positions with data:\n"
+            f"  CoM: {self.com}\n"
+            f"  Centroid: {self.centroid}\n"
+            f"  Margin: {self.margin}\n"
+            f"  Foot Positions: {self.foot_positions}\n"
+            f"  Foot Status: {self.foot_status}"
+        )
+
+        # Skip adjustments if stable
+        if self.margin > 0.01:
+            self.get_logger().info("Robot is stable, no adjustment needed.")
             return
 
-        # Compute CoM adjustment
-        delta_x = self.centroid[0] - self.com[0]
-        delta_y = self.centroid[1] - self.com[1]
-
-        # Adjust foot positions only for grounded feet
+        # Adjust foot positions
         adjusted_positions = []
         for i, (foot_x, foot_y, foot_z) in enumerate(self.foot_positions):
             if not self.foot_status[i]:
-                adjusted_positions.append((foot_x, foot_y, foot_z))  # Skip non-grounded feet
+                adjusted_positions.append((foot_x, foot_y, foot_z))  # Skip feet not in contact
                 continue
 
-            # Apply scaling to shift foot positions for CoM adjustment
-            new_x = foot_x + self.k_scaling * delta_x
-            new_y = foot_y + self.k_scaling * delta_y
-            adjusted_positions.append((new_x, new_y, foot_z))
+            # Example adjustment logic
+            new_x = foot_x + 0.1
+            new_y = foot_y + 0.1
+            new_z = foot_z
+            adjusted_positions.append((new_x, new_y, new_z))
 
-        # Publish adjusted positions
-        self.publish_leg_commands(adjusted_positions)
+        # Publish leg commands
+        leg_commands = LegCommands()
+        for pos in adjusted_positions:
+            leg_commands.positions.append(Point(x=pos[0], y=pos[1], z=pos[2]))
 
-    def publish_leg_commands(self, positions):
-        # Create and populate LegCommands message
-        msg = LegCommands()
-        for pos in positions:
-            command = LegPositions.Position()
-            command.x, command.y, command.z = pos
-            msg.positions.append(command)
-        self.pub_leg_commands.publish(msg)
+        self.pub_leg_commands.publish(leg_commands)
+        self.get_logger().info(f"Published leg commands: {leg_commands}")
 
-    def timer_callback(self):
-        self.adjust_foot_positions()
 
 def main(args=None):
     rclpy.init(args=args)
     node = StaticBalancingNode()
-
-    # Create a timer to periodically adjust foot positions
-    timer_period = 0.1  # 10 Hz
-    node.create_timer(timer_period, node.timer_callback)
-
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        node.get_logger().info("Shutting down static balancing node.")
+        pass
     finally:
         node.destroy_node()
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
