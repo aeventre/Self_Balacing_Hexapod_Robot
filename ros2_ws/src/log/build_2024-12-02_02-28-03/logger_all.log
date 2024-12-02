@@ -1,0 +1,143 @@
+[0.520s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'gpio_sensors']
+[0.521s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['gpio_sensors'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffb2049280>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffb2048f20>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffb2048f20>>, mixin_verb=('build',))
+[0.717s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.718s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.718s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.718s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.718s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.718s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.719s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/spiderbot/SpiderBot/ros2_ws/src'
+[0.719s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.719s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.720s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.720s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.720s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.720s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.720s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.721s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.721s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.843s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.844s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.845s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extensions ['ignore', 'ignore_ament_install']
+[0.846s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extension 'ignore'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extension 'ignore_ament_install'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extensions ['colcon_pkg']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extension 'colcon_pkg'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extensions ['colcon_meta']
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extension 'colcon_meta'
+[0.847s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extensions ['ros']
+[0.848s] Level 1:colcon.colcon_core.package_identification:_identify(gpio_sensors) by extension 'ros'
+[0.860s] DEBUG:colcon.colcon_core.package_identification:Package 'gpio_sensors' with type 'ros.catkin' and name 'gpio_sensors'
+[0.861s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.862s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.862s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.862s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.863s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.863s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.863s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['ignore', 'ignore_ament_install']
+[0.864s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'ignore'
+[0.864s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'ignore_ament_install'
+[0.864s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['colcon_pkg']
+[0.864s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'colcon_pkg'
+[0.865s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['colcon_meta']
+[0.865s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'colcon_meta'
+[0.865s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['ros']
+[0.865s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'ros'
+[0.865s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['cmake', 'python']
+[0.866s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'cmake'
+[0.866s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'python'
+[0.866s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extensions ['python_setup_py']
+[0.866s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer) by extension 'python_setup_py'
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['ignore', 'ignore_ament_install']
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'ignore'
+[0.867s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'ignore_ament_install'
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['colcon_pkg']
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'colcon_pkg'
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['colcon_meta']
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'colcon_meta'
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['ros']
+[0.868s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'ros'
+[0.869s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['cmake', 'python']
+[0.869s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'cmake'
+[0.869s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'python'
+[0.869s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extensions ['python_setup_py']
+[0.870s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include) by extension 'python_setup_py'
+[0.870s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['ignore', 'ignore_ament_install']
+[0.870s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'ignore'
+[0.871s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'ignore_ament_install'
+[0.871s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['colcon_pkg']
+[0.871s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'colcon_pkg'
+[0.871s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['colcon_meta']
+[0.871s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'colcon_meta'
+[0.872s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['ros']
+[0.872s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'ros'
+[0.872s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['cmake', 'python']
+[0.872s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'cmake'
+[0.873s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'python'
+[0.873s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extensions ['python_setup_py']
+[0.873s] Level 1:colcon.colcon_core.package_identification:_identify(static_balancer/include/static_balancer) by extension 'python_setup_py'
+[0.873s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.873s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.873s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.874s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.874s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.956s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.956s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.974s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 192 installed packages in /opt/ros/jazzy
+[0.977s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.145s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_args' from command line to 'None'
+[1.145s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_target' from command line to 'None'
+[1.146s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.147s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_clean_cache' from command line to 'False'
+[1.147s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_clean_first' from command line to 'False'
+[1.147s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'cmake_force_configure' from command line to 'False'
+[1.147s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'ament_cmake_args' from command line to 'None'
+[1.147s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'catkin_cmake_args' from command line to 'None'
+[1.148s] Level 5:colcon.colcon_core.verb:set package 'gpio_sensors' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.148s] DEBUG:colcon.colcon_core.verb:Building package 'gpio_sensors' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/spiderbot/SpiderBot/ros2_ws/src/build/gpio_sensors', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors', 'merge_install': False, 'path': '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors', 'symlink_install': False, 'test_result_base': None}
+[1.149s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.153s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.157s] INFO:colcon.colcon_ros.task.catkin.build:Building ROS package in '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors' with build type 'catkin'
+[1.158s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors'
+[1.181s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.182s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.182s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.255s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/spiderbot/SpiderBot/ros2_ws/src/build/gpio_sensors': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors
+[1.371s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gpio_sensors)
+[1.374s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/spiderbot/SpiderBot/ros2_ws/src/build/gpio_sensors' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors
+[1.414s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors' for CMake module files
+[1.418s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors' for CMake config files
+[1.421s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/bin'
+[1.421s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/lib/pkgconfig/gpio_sensors.pc'
+[1.423s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/lib/python3.12/site-packages'
+[1.426s] Level 1:colcon.colcon_core.environment:checking '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/bin'
+[1.427s] INFO:colcon.colcon_core.shell:Creating package script '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/gpio_sensors/package.ps1'
+[1.432s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/gpio_sensors/package.dsv'
+[1.437s] INFO:colcon.colcon_core.shell:Creating package script '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/gpio_sensors/package.sh'
+[1.442s] INFO:colcon.colcon_core.shell:Creating package script '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/gpio_sensors/package.bash'
+[1.447s] INFO:colcon.colcon_core.shell:Creating package script '/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/gpio_sensors/package.zsh'
+[1.452s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors/share/colcon-core/packages/gpio_sensors)
+[1.471s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.476s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.476s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '1'
+[1.477s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.543s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.543s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.544s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.702s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.703s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/spiderbot/SpiderBot/ros2_ws/src/install/local_setup.ps1'
+[1.708s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/spiderbot/SpiderBot/ros2_ws/src/install/_local_setup_util_ps1.py'
+[1.714s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/spiderbot/SpiderBot/ros2_ws/src/install/setup.ps1'
+[1.718s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/spiderbot/SpiderBot/ros2_ws/src/install/local_setup.sh'
+[1.722s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/spiderbot/SpiderBot/ros2_ws/src/install/_local_setup_util_sh.py'
+[1.728s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/spiderbot/SpiderBot/ros2_ws/src/install/setup.sh'
+[1.736s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/spiderbot/SpiderBot/ros2_ws/src/install/local_setup.bash'
+[1.739s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/spiderbot/SpiderBot/ros2_ws/src/install/setup.bash'
+[1.744s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/spiderbot/SpiderBot/ros2_ws/src/install/local_setup.zsh'
+[1.748s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/spiderbot/SpiderBot/ros2_ws/src/install/setup.zsh'

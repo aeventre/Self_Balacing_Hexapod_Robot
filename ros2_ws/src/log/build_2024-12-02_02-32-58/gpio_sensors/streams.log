@@ -1,0 +1,10 @@
+[0.112s] Invoking command in '/home/spiderbot/SpiderBot/ros2_ws/src/build/gpio_sensors': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors
+[0.196s] [33mCMake Warning:
+[0.199s]   Ignoring extra path from command line:
+[0.200s] 
+[0.201s]    "/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors"
+[0.205s] 
+[0.215s] [0m
+[0.222s] [0mCMake Error: The source directory "/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors" does not appear to contain CMakeLists.txt.
+[0.223s] Specify --help for usage, or press the help button on the CMake GUI.[0m
+[0.229s] Invoked command in '/home/spiderbot/SpiderBot/ros2_ws/src/build/gpio_sensors' returned '1': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/spiderbot/SpiderBot/ros2_ws/src/install/gpio_sensors
