@@ -1,0 +1,3 @@
+static_balancing_node:
+  ros__parameters:
+    k_scaling: 0.5
