@@ -14,12 +14,13 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='spiderbot',
-    maintainer_email='aeventre@buffalo.edu',
-    description='TODO: Package description',
+    maintainer_email='ellahick@buffalo.edu',
+    description='A package to monitor GPIO sensors for foot states',
     license='TODO: License declaration',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'gpio_sensor_node = gpio_sensors.gpio_sensor_node:main'
         ],
     },
 )

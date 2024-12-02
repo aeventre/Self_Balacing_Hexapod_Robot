@@ -3,9 +3,9 @@ from rclpy.node import Node
 from std_msgs.msg import Bool
 import RPi.GPIO as GPIO
 
-class FootSensorNode(Node):
+class GpioSensorNode(Node):
     def __init__(self):
-        super().__init__('foot_sensor_node')
+        super().__init__('gpio_sensor_node')
         self.gpio_pins = [29, 27, 31, 33, 35, 37]
         self.foot_status_pub = self.create_publisher(Bool, 'foot_status', 10)
 
@@ -13,7 +13,7 @@ class FootSensorNode(Node):
         for pin in self.gpio_pins:
             GPIO.setup(pin, GPIO.IN)
 
-        self.create_timer(0.5, self.publisj_foot_status)
+        self.create_timer(0.5, self.publish_foot_status)
 
     def publish_foot_status(self):
 
