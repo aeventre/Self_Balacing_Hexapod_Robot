@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <!-- Package Metadata -->
+  <name>kinematics</name>
+  <version>0.1.0</version>
+  <description>
+    A ROS2 package for computing forward and inverse kinematics for a hexapod robot.
+  </description>
+  <maintainer email="ellahick@buffalo.edu">spiderbot</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build Dependencies -->
+  <build_depend>ament_cmake</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
+  <!-- Build Export Dependencies -->
+  <build_export_depend>ament_cmake</build_export_depend>
+  <build_export_depend>rclcpp</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <!-- Execution Dependencies -->
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <!-- Test Dependencies -->
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_cmake_test</test_depend>
+
+  <!-- Export Information -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
