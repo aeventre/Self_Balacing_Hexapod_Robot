@@ -1,0 +1,33 @@
+running egg_info
+creating build/gpio_sensors/gpio_sensors.egg-info
+writing build/gpio_sensors/gpio_sensors.egg-info/PKG-INFO
+writing dependency_links to build/gpio_sensors/gpio_sensors.egg-info/dependency_links.txt
+writing entry points to build/gpio_sensors/gpio_sensors.egg-info/entry_points.txt
+writing requirements to build/gpio_sensors/gpio_sensors.egg-info/requires.txt
+writing top-level names to build/gpio_sensors/gpio_sensors.egg-info/top_level.txt
+writing manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'
+reading manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'
+writing manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors
+copying gpio_sensors/__init__.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors
+copying gpio_sensors/gpio_sensor_node.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors
+running install
+running install_lib
+creating /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors
+copying /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors/__init__.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors
+copying /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors/gpio_sensor_node.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors
+byte-compiling /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors/gpio_sensor_node.py to gpio_sensor_node.cpython-312.pyc
+running install_data
+creating /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/ament_index/resource_index/packages
+copying resource/gpio_sensors -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/ament_index/resource_index/packages
+copying package.xml -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors
+creating /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors/launch
+copying launch/gpio_sensors.launch.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors/launch
+running install_egg_info
+Copying build/gpio_sensors/gpio_sensors.egg-info to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors-0.0.1-py3.12.egg-info
+running install_scripts
+Installing gpio_sensor_node script to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/gpio_sensors
+writing list of installed files to '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log'

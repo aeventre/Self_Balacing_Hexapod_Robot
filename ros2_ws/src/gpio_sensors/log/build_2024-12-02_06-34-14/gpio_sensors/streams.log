@@ -1,0 +1,26 @@
+[5.555s] Invoking command in '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/gpio_sensors build --build-base /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build install --record /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log --single-version-externally-managed install_data
+[7.190s] running egg_info
+[7.293s] writing build/gpio_sensors/gpio_sensors.egg-info/PKG-INFO
+[7.296s] writing dependency_links to build/gpio_sensors/gpio_sensors.egg-info/dependency_links.txt
+[7.301s] writing entry points to build/gpio_sensors/gpio_sensors.egg-info/entry_points.txt
+[7.304s] writing requirements to build/gpio_sensors/gpio_sensors.egg-info/requires.txt
+[7.306s] writing top-level names to build/gpio_sensors/gpio_sensors.egg-info/top_level.txt
+[7.546s] reading manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'
+[7.556s] writing manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'
+[7.557s] running build
+[7.558s] running build_py
+[7.559s] copying gpio_sensors/__init__.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors
+[7.562s] copying gpio_sensors/gpio_sensor_node.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors
+[7.566s] running install
+[7.595s] running install_lib
+[7.708s] running install_data
+[7.709s] copying resource/gpio_sensors -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/ament_index/resource_index/packages
+[7.711s] copying package.xml -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors
+[7.713s] copying launch/gpio_sensors.launch.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors/launch
+[7.714s] running install_egg_info
+[7.828s] removing '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors-0.0.1-py3.12.egg-info' (and everything under it)
+[7.831s] Copying build/gpio_sensors/gpio_sensors.egg-info to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors-0.0.1-py3.12.egg-info
+[7.841s] running install_scripts
+[8.598s] Installing gpio_sensor_node script to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/gpio_sensors
+[8.601s] writing list of installed files to '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log'
+[8.762s] Invoked command in '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/gpio_sensors build --build-base /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build install --record /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log --single-version-externally-managed install_data

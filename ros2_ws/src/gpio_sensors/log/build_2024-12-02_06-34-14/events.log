@@ -1,0 +1,118 @@
+[0.000000] (-) TimerEvent: {}
+[0.000762] (gpio_sensors) JobQueued: {'identifier': 'gpio_sensors', 'dependencies': OrderedDict()}
+[0.004329] (gpio_sensors) JobStarted: {'identifier': 'gpio_sensors'}
+[0.089050] (-) TimerEvent: {}
+[0.190387] (-) TimerEvent: {}
+[0.291288] (-) TimerEvent: {}
+[0.392133] (-) TimerEvent: {}
+[0.492838] (-) TimerEvent: {}
+[0.593618] (-) TimerEvent: {}
+[0.694349] (-) TimerEvent: {}
+[0.795078] (-) TimerEvent: {}
+[0.895847] (-) TimerEvent: {}
+[0.996546] (-) TimerEvent: {}
+[1.097245] (-) TimerEvent: {}
+[1.197903] (-) TimerEvent: {}
+[1.298700] (-) TimerEvent: {}
+[1.399865] (-) TimerEvent: {}
+[1.500763] (-) TimerEvent: {}
+[1.601724] (-) TimerEvent: {}
+[1.702912] (-) TimerEvent: {}
+[1.803670] (-) TimerEvent: {}
+[1.904653] (-) TimerEvent: {}
+[2.005682] (-) TimerEvent: {}
+[2.106424] (-) TimerEvent: {}
+[2.207221] (-) TimerEvent: {}
+[2.307877] (-) TimerEvent: {}
+[2.408607] (-) TimerEvent: {}
+[2.509388] (-) TimerEvent: {}
+[2.610072] (-) TimerEvent: {}
+[2.710813] (-) TimerEvent: {}
+[2.812139] (-) TimerEvent: {}
+[2.913229] (-) TimerEvent: {}
+[3.013902] (-) TimerEvent: {}
+[3.114704] (-) TimerEvent: {}
+[3.215575] (-) TimerEvent: {}
+[3.316383] (-) TimerEvent: {}
+[3.417260] (-) TimerEvent: {}
+[3.518768] (-) TimerEvent: {}
+[3.619649] (-) TimerEvent: {}
+[3.720359] (-) TimerEvent: {}
+[3.821093] (-) TimerEvent: {}
+[3.921834] (-) TimerEvent: {}
+[4.022694] (-) TimerEvent: {}
+[4.123494] (-) TimerEvent: {}
+[4.224379] (-) TimerEvent: {}
+[4.325269] (-) TimerEvent: {}
+[4.425993] (-) TimerEvent: {}
+[4.526706] (-) TimerEvent: {}
+[4.627512] (-) TimerEvent: {}
+[4.728243] (-) TimerEvent: {}
+[4.828887] (-) TimerEvent: {}
+[4.929603] (-) TimerEvent: {}
+[5.030308] (-) TimerEvent: {}
+[5.131043] (-) TimerEvent: {}
+[5.231734] (-) TimerEvent: {}
+[5.332522] (-) TimerEvent: {}
+[5.433372] (-) TimerEvent: {}
+[5.534368] (-) TimerEvent: {}
+[5.549246] (gpio_sensors) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', 'build/gpio_sensors', 'build', '--build-base', '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build', 'install', '--record', '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'spiderbot', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/lib', 'HOME': '/home/spiderbot', 'OLDPWD': '/home/spiderbot', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '1747', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'spiderbot', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1002.slice/user@1002.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'spiderbot', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/bin:/home/spiderbot/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/home/spiderbot/.local/bin', 'SESSION_MANAGER': 'local/spiderbot-desktop:@/tmp/.ICE-unix/1706,unix/spiderbot-desktop:/tmp/.ICE-unix/1706', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/95584e3f_0d6b_4272_8090_d8859bf994c8', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1002', 'DISPLAY': ':0', 'LANG': 'C.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1002/.mutter-Xwaylandauth.FP8TX2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.136', 'SSH_AUTH_SOCK': '/run/user/1002/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages:/home/spiderbot/SpiderBot/environment/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600'}, 'shell': False}
+[5.634602] (-) TimerEvent: {}
+[5.735372] (-) TimerEvent: {}
+[5.836080] (-) TimerEvent: {}
+[5.936828] (-) TimerEvent: {}
+[6.037669] (-) TimerEvent: {}
+[6.141366] (-) TimerEvent: {}
+[6.242057] (-) TimerEvent: {}
+[6.342689] (-) TimerEvent: {}
+[6.443382] (-) TimerEvent: {}
+[6.544050] (-) TimerEvent: {}
+[6.644744] (-) TimerEvent: {}
+[6.745563] (-) TimerEvent: {}
+[6.849366] (-) TimerEvent: {}
+[6.950095] (-) TimerEvent: {}
+[7.050764] (-) TimerEvent: {}
+[7.151537] (-) TimerEvent: {}
+[7.193597] (gpio_sensors) StdoutLine: {'line': b'running egg_info\n'}
+[7.251708] (-) TimerEvent: {}
+[7.297114] (gpio_sensors) StdoutLine: {'line': b'writing build/gpio_sensors/gpio_sensors.egg-info/PKG-INFO\n'}
+[7.299545] (gpio_sensors) StdoutLine: {'line': b'writing dependency_links to build/gpio_sensors/gpio_sensors.egg-info/dependency_links.txt\n'}
+[7.305033] (gpio_sensors) StdoutLine: {'line': b'writing entry points to build/gpio_sensors/gpio_sensors.egg-info/entry_points.txt\n'}
+[7.308314] (gpio_sensors) StdoutLine: {'line': b'writing requirements to build/gpio_sensors/gpio_sensors.egg-info/requires.txt\n'}
+[7.309743] (gpio_sensors) StdoutLine: {'line': b'writing top-level names to build/gpio_sensors/gpio_sensors.egg-info/top_level.txt\n'}
+[7.351889] (-) TimerEvent: {}
+[7.455305] (-) TimerEvent: {}
+[7.550230] (gpio_sensors) StdoutLine: {'line': b"reading manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'\n"}
+[7.555451] (-) TimerEvent: {}
+[7.559694] (gpio_sensors) StdoutLine: {'line': b"writing manifest file 'build/gpio_sensors/gpio_sensors.egg-info/SOURCES.txt'\n"}
+[7.561059] (gpio_sensors) StdoutLine: {'line': b'running build\n'}
+[7.561874] (gpio_sensors) StdoutLine: {'line': b'running build_py\n'}
+[7.562709] (gpio_sensors) StdoutLine: {'line': b'copying gpio_sensors/__init__.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors\n'}
+[7.565408] (gpio_sensors) StdoutLine: {'line': b'copying gpio_sensors/gpio_sensor_node.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/build/lib/gpio_sensors\n'}
+[7.569954] (gpio_sensors) StdoutLine: {'line': b'running install\n'}
+[7.599066] (gpio_sensors) StdoutLine: {'line': b'running install_lib\n'}
+[7.655612] (-) TimerEvent: {}
+[7.711858] (gpio_sensors) StdoutLine: {'line': b'running install_data\n'}
+[7.713179] (gpio_sensors) StdoutLine: {'line': b'copying resource/gpio_sensors -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/ament_index/resource_index/packages\n'}
+[7.714819] (gpio_sensors) StdoutLine: {'line': b'copying package.xml -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors\n'}
+[7.716564] (gpio_sensors) StdoutLine: {'line': b'copying launch/gpio_sensors.launch.py -> /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/share/gpio_sensors/launch\n'}
+[7.717638] (gpio_sensors) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.755793] (-) TimerEvent: {}
+[7.832228] (gpio_sensors) StdoutLine: {'line': b"removing '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors-0.0.1-py3.12.egg-info' (and everything under it)\n"}
+[7.835049] (gpio_sensors) StdoutLine: {'line': b'Copying build/gpio_sensors/gpio_sensors.egg-info to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/python3.12/site-packages/gpio_sensors-0.0.1-py3.12.egg-info\n'}
+[7.844710] (gpio_sensors) StdoutLine: {'line': b'running install_scripts\n'}
+[7.855969] (-) TimerEvent: {}
+[7.956649] (-) TimerEvent: {}
+[8.057404] (-) TimerEvent: {}
+[8.158064] (-) TimerEvent: {}
+[8.258688] (-) TimerEvent: {}
+[8.359360] (-) TimerEvent: {}
+[8.460063] (-) TimerEvent: {}
+[8.560744] (-) TimerEvent: {}
+[8.601682] (gpio_sensors) StdoutLine: {'line': b'Installing gpio_sensor_node script to /home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/install/gpio_sensors/lib/gpio_sensors\n'}
+[8.604796] (gpio_sensors) StdoutLine: {'line': b"writing list of installed files to '/home/spiderbot/SpiderBot/ros2_ws/src/gpio_sensors/build/gpio_sensors/install.log'\n"}
+[8.661130] (-) TimerEvent: {}
+[8.762456] (-) TimerEvent: {}
+[8.765919] (gpio_sensors) CommandEnded: {'returncode': 0}
+[8.849873] (gpio_sensors) JobEnded: {'identifier': 'gpio_sensors', 'rc': 0}
+[8.854444] (-) EventReactorShutdown: {}

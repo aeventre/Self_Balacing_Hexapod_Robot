@@ -1,0 +1,2 @@
+[console_scripts]
+gpio_sensor_node = gpio_sensors.gpio_sensor_node:main

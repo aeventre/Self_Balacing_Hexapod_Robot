@@ -6,13 +6,17 @@ setup(
     name=package_name,
     version='0.0.1',
     packages=[package_name],
-    install_requires=['setuptools', 'rclpy', 'RPi.GPIO', 'std_msgs'],
+    data_files=[
+        ('share/ament_index/resource_index/packages', ['resource/gpio_sensors']),
+        ('share/gpio_sensors', ['package.xml']),
+        ('share/gpio_sensors/launch', ['launch/gpio_sensors.launch.py'])
+],
+    install_requires=['setuptools', 'RPi.GPIO'],
     zip_safe=True,
-    maintainer='spiderbot',
+    maintainer='Ella Hicks',
     maintainer_email='ellahick@buffalo.edu',
-    description='A package to monitor GPIO sensors for foot states.',
-    license='Apache License 2.0',
-    tests_require=['pytest'],
+    description='A package for monitoring GPIO sensors.',
+    license='Apache 2.0',
     entry_points={
         'console_scripts': [
             'gpio_sensor_node = gpio_sensors.gpio_sensor_node:main',

@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: gpio_sensors
+Version: 0.0.1
+Summary: A package for monitoring GPIO sensors.
+Maintainer: Ella Hicks
+Maintainer-email: ellahick@buffalo.edu
+License: Apache 2.0
+Requires-Dist: setuptools
