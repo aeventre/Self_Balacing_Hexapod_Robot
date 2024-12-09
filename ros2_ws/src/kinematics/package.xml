@@ -1,28 +1,34 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-<<<<<<<< HEAD:ros2_ws/src/kinematics/package.xml
+  <!-- Package Metadata -->
   <name>kinematics</name>
-========
-  <name>servo_control</name>
->>>>>>>> dafadcc (Created the servo_control package as well as a launch script for launching it without the second PCA because it isn't working rn):ros2_ws/src/servo_control/package.xml
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="aeventre@buffalo.edu">spiderbot</maintainer>
-  <license>TODO: License declaration</license>
+  <version>0.1.0</version>
+  <description>
+    A ROS2 package for computing forward and inverse kinematics for a hexapod robot.
+  </description>
+  <maintainer email="ellahick@buffalo.edu">spiderbot</maintainer>
+  <license>Apache-2.0</license>
 
-  <buildtool_depend>ament_cmake</buildtool_depend>
+  <!-- Build Dependencies -->
+  <build_depend>ament_cmake</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
 
+  <!-- Build Export Dependencies -->
+  <build_export_depend>ament_cmake</build_export_depend>
+  <build_export_depend>rclcpp</build_export_depend>
+  <build_export_depend>std_msgs</build_export_depend>
+
+  <!-- Execution Dependencies -->
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+
+  <!-- Test Dependencies -->
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_test</test_depend>
 
-
-  <buildtool_depend>ament_python</buildtool_depend>
-  <exec_depend>python3</exec_depend>
-  <exec_depend>adafruit-blinka</exec_depend>
-  <exec_depend>adafruit-circuitpython-pca9685</exec_depend>
-  <exec_depend>adafruit-circuitpython-busdevice</exec_depend>
-
+  <!-- Export Information -->
   <export>
     <build_type>ament_cmake</build_type>
   </export>

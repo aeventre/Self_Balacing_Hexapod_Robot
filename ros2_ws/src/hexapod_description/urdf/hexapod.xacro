@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="hexapod">
+
+  <!-- General properties -->
+  <xacro:property name="joint_lower_limit" value="-1.39626" /> <!-- -80 degrees -->
+  <xacro:property name="joint_upper_limit" value="1.39626" />  <!-- +80 degrees -->
+  <xacro:property name="joint_effort" value="10" />
+  <xacro:property name="joint_velocity" value="5" />
+
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.2 0.05" />
+      </geometry>
+      <origin xyz="0 0 -0.025" />
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+  </link>
+
+  <!-- Leg macro -->
+  <xacro:macro name="leg" params="name x y angle side">
+    <!-- Coxa joint -->
+    <joint name="coxa_joint_${name}" type="revolute">
+      <parent link="base_link" />
+      <child link="coxa_${name}" />
+      <origin xyz="${x} ${y} 0" rpy="0 0 ${angle}" />
+      <axis xyz="0 0 ${side}" /> <!-- Coxa rotates about the Z-axis -->
+      <limit lower="${joint_lower_limit}" upper="${joint_upper_limit}" effort="${joint_effort}" velocity="${joint_velocity}" />
+    </joint>
+    <link name="coxa_${name}">
+      <visual>
+        <geometry>
+          <box size="0.05 0.02 0.02" />
+        </geometry>
+        <material name="blue">
+          <color rgba="0 0 1 1" />
+        </material>
+      </visual>
+    </link>
+
+    <!-- Femur joint -->
+    <joint name="femur_joint_${name}" type="revolute">
+      <parent link="coxa_${name}" />
+      <child link="femur_${name}" />
+      <origin xyz="0.044 0 0" rpy="0 0 0" />
+      <axis xyz="0 ${side} 0" /> <!-- Femur rotates about the Y-axis -->
+      <limit lower="${joint_lower_limit}" upper="${joint_upper_limit}" effort="${joint_effort}" velocity="${joint_velocity}" />
+    </joint>
+    <link name="femur_${name}">
+      <visual>
+        <geometry>
+          <box size="0.08 0.02 0.02" />
+        </geometry>
+        <material name="green">
+          <color rgba="0 1 0 1" />
+        </material>
+      </visual>
+    </link>
+
+    <!-- Tibia joint -->
+    <joint name="tibia_joint_${name}" type="revolute">
+      <parent link="femur_${name}" />
+      <child link="tibia_${name}" />
+      <origin xyz="0.08 0 0" rpy="0 0 0" />
+      <axis xyz="0 ${side} 0" /> <!-- Tibia rotates about the Y-axis -->
+      <limit lower="${joint_lower_limit}" upper="${joint_upper_limit}" effort="${joint_effort}" velocity="${joint_velocity}" />
+    </joint>
+    <link name="tibia_${name}">
+      <visual>
+        <geometry>
+          <box size="0.155 0.02 0.02" />
+        </geometry>
+        <material name="red">
+          <color rgba="1 0 0 1" />
+        </material>
+      </visual>
+    </link>
+
+    <!-- Foot -->
+    <joint name="foot_joint_${name}" type="fixed">
+      <parent link="tibia_${name}" />
+      <child link="foot_${name}" />
+      <origin xyz="0 0 -0.155" rpy="0 0 0" />
+    </joint>
+    <link name="foot_${name}">
+      <visual>
+        <geometry>
+          <sphere radius="0.01" />
+        </geometry>
+        <material name="black">
+          <color rgba="0 0 0 1" />
+        </material>
+      </visual>
+    </link>
+  </xacro:macro>
+
+  <!-- Legs -->
+  <xacro:leg name="0" x="-0.09" y="-0.065" angle="-2.35619" side="1" /> <!-- Back Left -->
+  <xacro:leg name="1" x="0.0" y="-0.09" angle="-1.5708" side="1" />     <!-- Left -->
+  <xacro:leg name="2" x="0.09" y="-0.065" angle="-0.7854" side="1" />   <!-- Front Left -->
+  <xacro:leg name="3" x="-0.09" y="0.065" angle="2.35619" side="-1" />  <!-- Back Right -->
+  <xacro:leg name="4" x="0.0" y="0.09" angle="1.5708" side="-1" />      <!-- Right -->
+  <xacro:leg name="5" x="0.09" y="0.065" angle="0.7854" side="-1" />    <!-- Front Right -->
+
+</robot>

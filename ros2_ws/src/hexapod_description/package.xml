@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>hexapod_description</name>
+  <version>0.1.0</version>
+  <description>Hexapod description package for ROS 2 visualization in RViz.</description>
+
+  <maintainer email="your_email@example.com">Your Name</maintainer>
+  <license>Apache-2.0</license>
+
+  <!-- Build dependencies -->
+  <build_depend>ament_cmake</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+
+  <!-- Build export dependencies -->
+  <build_export_depend>ament_cmake</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <build_export_depend>xacro</build_export_depend>
+
+  <!-- Execution dependencies -->
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
